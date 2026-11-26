@@ -1,0 +1,38 @@
+/* Custom scrollbar halus untuk tampilan SaaS modern */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+/* Animasi transisi halus antar tab dan modal */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fadeSlideUp 0.25s ease-out forwards;
+}
+/* Garis putus-putus khusus timeline rencana */
+.timeline-planned-line {
+  background-image: linear-gradient(to right, #94A3B8 55%, rgba(255, 255, 255, 0) 0%);
+  background-position: center;
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+}
+  h1,h2,h3,h4,.font-bold,.font-extrabold{font-family:"Poppins","Montserrat",sans-serif}
+html, body { background: #F5F7FB; color: #1e293b; color-scheme: light; }

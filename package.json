@@ -1,0 +1,10 @@
+{
+  "name": "morevoca-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dashboard manajemen fotografer wedding Morevoca (HTML + Tailwind + JS modular)",
+  "scripts": {
+    "build": "node scripts/build-env.js",
+    "start": "npx serve ."
+  }
+}
