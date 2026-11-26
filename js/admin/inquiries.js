@@ -18,7 +18,8 @@ function renderInquiriesView() {
         <p class="text-[11px] text-slate-400 mt-2">${esc(x.whatsapp)} · ${new Date(x.created_at).toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })}</p>
         <div class="flex flex-wrap items-center gap-2 mt-3">
           <a href="${waUrl(x.whatsapp, 'Halo ' + x.name + ', terima kasih sudah menghubungi Morevoca.')}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-semibold"><i data-lucide="message-circle" class="w-4 h-4"></i>WhatsApp</a>
-          ${INQ_STATUS.filter((s) => s[0] !== x.status).map((s) => `<button onclick="setInquiryStatus('${x.id}','${s[0]}')" class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50">${s[1]}</button>`).join('')}
+          ${x.status !== 'deal' ? `<button onclick="openProjectForm(null,'${x.id}')" class="px-3.5 py-2 rounded-xl ${BTN} text-xs font-semibold">Jadikan proyek</button>` : ''}
+          ${INQ_STATUS.filter((s) => s[0] !== x.status && s[0] !== 'deal').map((s) => `<button onclick="setInquiryStatus('${x.id}','${s[0]}')" class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50">${s[1]}</button>`).join('')}
           <button onclick="deleteInquiry('${x.id}')" class="ml-auto p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50" aria-label="Hapus"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
         </div></div>`; }).join('') || emptyBox('Belum ada pertanyaan masuk.')}</div></div>`;
 }

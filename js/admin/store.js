@@ -4,7 +4,7 @@ const BTN = 'bg-[#C2410C] hover:bg-[#9A3412] text-white';
 const INPUT = 'w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#C2410C]/20 focus:border-[#C2410C]';
 const EVENT_TYPES = ['Pernikahan', 'Akad', 'Resepsi', 'Prewedding', 'Lamaran', 'Lainnya'];
 
-const store = { albums: [], photos: {}, packages: [], testimonials: [], inquiries: [], settings: null, user: null };
+const store = { albums: [], photos: {}, packages: [], testimonials: [], inquiries: [], projects: [], payments: [], settings: null, user: null };
 
 async function q(promise) {
   const { data, error } = await promise;
@@ -12,17 +12,19 @@ async function q(promise) {
   return data;
 }
 async function loadStore() {
-  const [s, a, p, t, i] = await Promise.all([
+  const [s, a, p, t, i, pr, pay] = await Promise.all([
     q(db.from('site_settings').select('*').eq('id', 1).maybeSingle()),
     q(db.from('albums').select('*').order('sort').order('created_at', { ascending: false })),
     q(db.from('packages').select('*').order('sort')),
     q(db.from('testimonials').select('*').order('created_at', { ascending: false })),
     q(db.from('inquiries').select('*, packages(name)').order('created_at', { ascending: false })),
+    q(db.from('projects').select('*, packages(name)').order('event_date', { ascending: true, nullsFirst: false })),
+    q(db.from('payments').select('*').order('paid_at', { ascending: false })),
   ]);
-  store.settings = s || {}; store.albums = a || []; store.packages = p || []; store.testimonials = t || []; store.inquiries = i || [];
+  store.settings = s || {}; store.albums = a || []; store.packages = p || []; store.testimonials = t || []; store.inquiries = i || []; store.projects = pr || []; store.payments = pay || [];
 }
 async function reload(table) {
-  const map = { albums: () => db.from('albums').select('*').order('sort').order('created_at', { ascending: false }), packages: () => db.from('packages').select('*').order('sort'), testimonials: () => db.from('testimonials').select('*').order('created_at', { ascending: false }), inquiries: () => db.from('inquiries').select('*, packages(name)').order('created_at', { ascending: false }) };
+  const map = { albums: () => db.from('albums').select('*').order('sort').order('created_at', { ascending: false }), packages: () => db.from('packages').select('*').order('sort'), testimonials: () => db.from('testimonials').select('*').order('created_at', { ascending: false }), inquiries: () => db.from('inquiries').select('*, packages(name)').order('created_at', { ascending: false }), projects: () => db.from('projects').select('*, packages(name)').order('event_date', { ascending: true, nullsFirst: false }), payments: () => db.from('payments').select('*').order('paid_at', { ascending: false }) };
   store[table] = (await q(map[table]())) || store[table];
   renderApp();
 }
@@ -45,3 +47,6 @@ async function uploadPhoto(file, folder) {
   return { path, url: db.storage.from('portfolio').getPublicUrl(path).data.publicUrl };
 }
 function pathFromUrl(url) { const m = String(url || '').split('/object/public/portfolio/')[1]; return m ? decodeURIComponent(m) : null; }
+
+const paidOf = (pid) => store.payments.filter((x) => x.project_id === pid).reduce((s, x) => s + Number(x.amount), 0);
+const PROJ_STATUS = { booking: ['Booking', 'bg-amber-50 text-amber-700'], dp: ['DP masuk', 'bg-sky-50 text-sky-700'], editing: ['Editing', 'bg-violet-50 text-violet-700'], selesai: ['Selesai', 'bg-emerald-50 text-emerald-700'], batal: ['Batal', 'bg-slate-100 text-slate-500'] };

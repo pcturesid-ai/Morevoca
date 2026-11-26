@@ -47,7 +47,7 @@ async function bootAdmin() {
   document.querySelectorAll('[data-user-name]').forEach((el) => (el.textContent = session.user.email.split('@')[0]));
   hideGate();
   await loadStore();
-  appState.activeTab = 'inquiries';
-  document.getElementById('pageTitle').textContent = NAV_ITEMS.find((n) => n.id === 'inquiries').label;
+  appState.activeTab = 'dashboard';
+  document.getElementById('pageTitle').textContent = NAV_ITEMS[0].label;
   renderApp();
 }
