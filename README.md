@@ -1,4 +1,7 @@
-# Morevoca Dashboard
+# Morevoca
+
+- `index.html` = halaman portofolio untuk pengunjung (album, paket, testimoni, form tanya)
+- `admin.html` = dashboard admin (belum tersambung data asli)
 
 Dashboard manajemen fotografer wedding: proyek, tugas, kanban, kalender, log waktu, laporan, tim, klien, dokumen, pengaturan.
 HTML + Tailwind (CDN) + JavaScript modular, tanpa framework. Saat ini memakai **data contoh**; Supabase sudah disiapkan sebagai sambungan data.
@@ -6,7 +9,10 @@ HTML + Tailwind (CDN) + JavaScript modular, tanpa framework. Saat ini memakai **
 ## Struktur
 
 ```
-index.html                 kerangka halaman (sidebar, header, modal)
+index.html                 halaman portofolio publik
+admin.html                 dashboard admin (sidebar, header, modal)
+assets/css/portfolio.css   gaya halaman publik
+js/portfolio/              logika halaman publik (api, render, lightbox, form)
 assets/css/app.css         gaya tambahan
 assets/brand/              logo & favicon
 js/config/tailwind.config.js   warna & font (brand oranye, Poppins/Montserrat)
@@ -18,7 +24,7 @@ js/views/                  satu file per halaman
 js/actions/                handler tombol/formulir
 js/main.js                 render awal
 scripts/build-env.js       menulis env.js dari environment variable
-supabase/                  tempat skema SQL
+supabase/migrations/       skema SQL (jalankan di akun Supabase baru)
 ```
 
 ## Pakai akun sendiri (Supabase + Vercel)

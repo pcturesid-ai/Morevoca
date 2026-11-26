@@ -1,0 +1,12 @@
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { background: #FFFFFF; color: #1e293b; color-scheme: light; font-family: "Montserrat", system-ui, sans-serif; }
+h1, h2, h3, h4, .font-display { font-family: "Poppins", "Montserrat", sans-serif; }
+.slider { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 16px 18px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.slider::-webkit-scrollbar { display: none; }
+.slider > * { scroll-snap-align: center; flex: 0 0 min(82%, 340px); }
+.chip { transition: all .15s; }
+.chip[aria-pressed="true"], .chip.on { background: #C2410C; color: #fff; border-color: #C2410C; }
+.tabbar { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.fade-img { opacity: 0; transition: opacity .4s; } .fade-img.loaded { opacity: 1; }
+#lightbox[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-img { transition: none; } }
