@@ -45,7 +45,7 @@ function renderSidebar() {
         }"
       >
         <i data-lucide="${item.icon}" class="w-[18px] h-[18px] shrink-0 ${isActive ? 'text-[#C2410C]' : 'text-slate-400'}"></i>
-        <span class="truncate">${item.label}</span>
+        <span class="truncate">${item.label}</span>${item.dummy ? '<span class="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-400">contoh</span>' : ''}
       </button>
     `;
   }).join('');

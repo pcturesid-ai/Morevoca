@@ -4,17 +4,24 @@
  * ============================================================
  */
 const NAV_ITEMS = [
-  { id: 'dashboard', label: 'Dashboard', icon: 'home' },
-  { id: 'projects', label: 'Proyek Wedding', icon: 'folder-heart' },
-  { id: 'tasks', label: 'Tugas & Editing', icon: 'check-circle-2' },
-  { id: 'kanban', label: 'Papan Kanban', icon: 'columns-3' },
-  { id: 'calendar', label: 'Jadwal Liputan', icon: 'calendar' },
-  { id: 'timelog', label: 'Log Jam Kerja', icon: 'clock' },
-  { id: 'reports', label: 'Laporan', icon: 'bar-chart-3' },
-  { id: 'team', label: 'Tim Fotografer', icon: 'users' },
-  { id: 'clients', label: 'Klien Pengantin', icon: 'heart-handshake' },
-  { id: 'documents', label: 'Kontrak & Album', icon: 'file-text' },
-  { id: 'settings', label: 'Pengaturan', icon: 'settings' },
+  // Data asli (Supabase)
+  { id: 'inquiries', label: 'Pertanyaan Masuk', icon: 'inbox' },
+  { id: 'albums', label: 'Album Portofolio', icon: 'images' },
+  { id: 'packages', label: 'Paket & Harga', icon: 'package' },
+  { id: 'testimonials', label: 'Testimoni', icon: 'message-square-quote' },
+  { id: 'site', label: 'Pengaturan Situs', icon: 'globe' },
+  // Halaman di bawah ini masih data contoh
+  { id: 'dashboard', label: 'Dashboard', icon: 'home', dummy: true },
+  { id: 'projects', label: 'Proyek Wedding', icon: 'folder-heart', dummy: true },
+  { id: 'tasks', label: 'Tugas & Editing', icon: 'check-circle-2', dummy: true },
+  { id: 'kanban', label: 'Papan Kanban', icon: 'columns-3', dummy: true },
+  { id: 'calendar', label: 'Jadwal Liputan', icon: 'calendar', dummy: true },
+  { id: 'timelog', label: 'Log Jam Kerja', icon: 'clock', dummy: true },
+  { id: 'reports', label: 'Laporan', icon: 'bar-chart-3', dummy: true },
+  { id: 'team', label: 'Tim Fotografer', icon: 'users', dummy: true },
+  { id: 'clients', label: 'Klien Pengantin', icon: 'heart-handshake', dummy: true },
+  { id: 'documents', label: 'Kontrak & Album', icon: 'file-text', dummy: true },
+  { id: 'settings', label: 'Pengaturan', icon: 'settings', dummy: true },
 ];
 
 const appState = {

@@ -156,8 +156,8 @@
                 RP
               </div>
               <div class="hidden md:block leading-tight">
-                <p class="text-[13px] font-bold text-slate-800">Raka Pratama</p>
-                <p class="text-[11px] text-slate-400 font-medium">Lead Photographer</p>
+                <p class="text-[13px] font-bold text-slate-800" data-user-name>Admin</p>
+                <p class="text-[11px] text-slate-400 font-medium">Pemilik studio</p>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 hidden md:block"></i>
             </button>
@@ -165,8 +165,8 @@
             <!-- Dropdown Profil -->
             <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-50 animate-fade-in">
               <div class="px-3 py-2.5 border-b border-slate-100 mb-1">
-                <p class="text-xs font-bold text-slate-800">Raka Pratama</p>
-                <p class="text-[11px] text-slate-400">raka@morevoca.id</p>
+                <p class="text-xs font-bold text-slate-800" data-user-name>Admin</p>
+                <p class="text-[11px] text-slate-400" data-user-email></p>
               </div>
               <button onclick="toggleDropdown('profileDropdown'); switchTab('team')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">
                 <i data-lucide="user" class="w-4 h-4 text-slate-400"></i> Profil & Jadwal Saya
@@ -174,8 +174,8 @@
               <button onclick="toggleDropdown('profileDropdown'); switchTab('settings')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900">
                 <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i> Pengaturan Studio
               </button>
-              <button onclick="toggleDropdown('profileDropdown'); openModal('proUpgradeModal')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-[#C2410C] hover:bg-orange-50">
-                <i data-lucide="sparkles" class="w-4 h-4"></i> Paket Langganan Pro
+              <button onclick="logout()" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-rose-600 hover:bg-rose-50">
+                <i data-lucide="log-out" class="w-4 h-4"></i> Keluar
               </button>
             </div>
           </div>
@@ -395,6 +395,14 @@
 <script src="js/views/settings.js"></script>
 <script src="js/actions/handlers.js"></script>
 <script src="js/actions/project-detail.js"></script>
+<script src="js/admin/store.js"></script>
+<script src="js/admin/sheet.js"></script>
+<script src="js/admin/auth.js"></script>
+<script src="js/admin/inquiries.js"></script>
+<script src="js/admin/packages.js"></script>
+<script src="js/admin/testimonials.js"></script>
+<script src="js/admin/site.js"></script>
+<script src="js/admin/albums.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

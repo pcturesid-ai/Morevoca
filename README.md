@@ -1,7 +1,7 @@
 # Morevoca
 
 - `index.html` = halaman portofolio untuk pengunjung (album, paket, testimoni, form tanya)
-- `admin.html` = dashboard admin (belum tersambung data asli)
+- `admin.html` = dashboard admin. Login Supabase; halaman Pertanyaan Masuk, Album, Paket, Testimoni, Pengaturan Situs memakai data asli. Halaman bertanda "contoh" masih data tiruan.
 
 Dashboard manajemen fotografer wedding: proyek, tugas, kanban, kalender, log waktu, laporan, tim, klien, dokumen, pengaturan.
 HTML + Tailwind (CDN) + JavaScript modular, tanpa framework. Saat ini memakai **data contoh**; Supabase sudah disiapkan sebagai sambungan data.
