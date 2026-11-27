@@ -40,11 +40,14 @@ async function bootAdmin() {
   if (!window.db) { showGate('Supabase belum dikonfigurasi (SUPABASE_URL / SUPABASE_ANON_KEY).'); return; }
   const { data: { session } } = await db.auth.getSession();
   if (!session) { showGate(); return; }
+  /* Selalu refresh JWT sebelum load data supaya token tidak expired */
+  const { data: { session: fresh }, error: refreshErr } = await db.auth.refreshSession();
+  if (refreshErr || !fresh) { await db.auth.signOut(); showGate('Sesi berakhir, silakan masuk kembali.'); return; }
   const { data: isAdmin } = await db.rpc('is_admin');
   if (!isAdmin) { await db.auth.signOut(); AUTH_MODE = 'login'; showGate('Akun ini bukan admin. Admin sudah terdaftar.'); return; }
-  store.user = session.user;
-  document.querySelectorAll('[data-user-email]').forEach((el) => (el.textContent = session.user.email));
-  document.querySelectorAll('[data-user-name]').forEach((el) => (el.textContent = session.user.email.split('@')[0]));
+  store.user = fresh.user;
+  document.querySelectorAll('[data-user-email]').forEach((el) => (el.textContent = fresh.user.email));
+  document.querySelectorAll('[data-user-name]').forEach((el) => (el.textContent = fresh.user.email.split('@')[0]));
   hideGate();
   await loadStore();
   appState.activeTab = 'dashboard';
