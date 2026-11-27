@@ -23,7 +23,7 @@ async function submitInquiry(e) {
 }
 
 let RATING = 5;
-function setRating(n) { RATING = n; document.querySelectorAll('#ratingBtns button').forEach((b, i) => b.classList.toggle('text-amber-500', i < n)); }
+function setRating(n) { RATING = n; document.querySelectorAll('#ratingBtns button').forEach((b, i) => { b.style.color = i < n ? '#F59E0B' : '#CBD5E1'; }); }
 function openTesti() { document.getElementById('testiModal').hidden = false; document.body.style.overflow = 'hidden'; setRating(5); }
 function closeTesti() { document.getElementById('testiModal').hidden = true; document.body.style.overflow = ''; }
 async function submitTesti(e) {
