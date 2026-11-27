@@ -22,7 +22,7 @@ const Api = {
   },
   async testimonials() {
     if (!window.db) return [];
-    const { data } = await db.from('testimonials').select('*').eq('approved', true).order('created_at', { ascending: false });
+    const { data } = await db.from('testimonials').select('*').eq('status', 'approved').order('created_at', { ascending: false });
     return data || [];
   },
   async sendInquiry(row) {
