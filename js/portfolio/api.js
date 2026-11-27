@@ -7,7 +7,7 @@ const Api = {
   },
   async albums() {
     if (!window.db) return [];
-    const { data } = await db.from('albums').select('*').order('sort').order('event_date', { ascending: false });
+    const { data } = await db.from('albums').select('*').order('sort').order('created_at', { ascending: false });
     return data || [];
   },
   async photos(albumId) {
@@ -22,7 +22,7 @@ const Api = {
   },
   async testimonials() {
     if (!window.db) return [];
-    const { data } = await db.from('testimonials').select('*').order('created_at', { ascending: false });
+    const { data } = await db.from('testimonials').select('*').eq('approved', true).order('created_at', { ascending: false });
     return data || [];
   },
   async sendInquiry(row) {
